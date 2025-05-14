@@ -5,12 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let mostrandoPaisagem = false;
 
     imagem.addEventListener('click', () => {
-        // Remove a animação se já foi aplicada
-        imagem.style.animation = 'none';
-        // Força reflow para reiniciar animação
-        void imagem.offsetWidth;
-        imagem.style.animation = 'revelar 1s ease';
-
+        // Atualiza imagem e som com base no estado atual
         if (!mostrandoPaisagem) {
             imagem.src = 'paisagem.png';
             if (som.paused) {
@@ -21,6 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
             som.pause();
             som.currentTime = 0;
         }
+
+        // Reaplica animação de revelação
+        imagem.classList.remove('imagem-clique');
+        void imagem.offsetWidth; // Força reflow
+        imagem.classList.add('imagem-clique');
 
         mostrandoPaisagem = !mostrandoPaisagem;
     });
