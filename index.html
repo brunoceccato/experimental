@@ -8,17 +8,25 @@
 </head>
 <body>
     <div class="container">
+        <!-- Botão inicial -->
         <div class="botao" id="botao">
             <div class="circulo"></div>
         </div>
-        <div class="paisagem" id="paisagem">
-            <!-- Elementos da paisagem -->
-            <div class="sol"></div>
-            <div class="montanhas"></div>
-            <div class="riacho"></div>
+        
+        <!-- Imagem do sol que se tornará a paisagem -->
+        <div class="sol-imagem" id="solImagem">
+            <img src="sol.png" alt="Sol" id="imagemSol">
+        </div>
+        
+        <!-- Imagem da paisagem -->
+        <div class="paisagem-imagem" id="paisagemImagem">
+            <img src="sol_com_paisagem.png" alt="Sol com Paisagem" id="imagemPaisagem">
         </div>
     </div>
+    
+    <!-- Áudio para o clique -->
     <audio id="somConceitual" src="som_animacao.mp3" preload="auto"></audio>
+    
     <script src="script.js"></script>
 </body>
 </html>
