@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         imagem.src = 'sol.png';
         som.pause();
-        som.currentTime = 0;
       }
       mostrandoPaisagem = !mostrandoPaisagem;
     }, 100); // ligeiro atraso para não cortar a transição
