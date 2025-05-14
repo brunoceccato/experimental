@@ -1,30 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const imagemSol = document.getElementById('imagemSol');
-    const imagemPaisagem = document.getElementById('imagemPaisagem');
-    const somConceitual = document.getElementById('somConceitual');
+    const imagem = document.getElementById('imagemTransformadora');
+    const som = document.getElementById('somConceitual');
 
     let mostrandoPaisagem = false;
 
-    imagemSol.addEventListener('click', () => {
+    imagem.addEventListener('click', () => {
+        // Atualiza imagem e som com base no estado atual
         if (!mostrandoPaisagem) {
-            imagemSol.classList.remove('ativa');
-            imagemPaisagem.classList.add('ativa');
-            somConceitual.play();
+            imagem.src = 'paisagem.png';
+            if (som.paused) {
+                som.play().catch(err => console.error("Erro ao tocar som:", err));
+            }
         } else {
-            imagemPaisagem.classList.remove('ativa');
-            imagemSol.classList.add('ativa');
-            somConceitual.pause();
-            somConceitual.currentTime = 0;
+            imagem.src = 'sol.png';
+            som.pause();
+            som.currentTime = 0;
         }
 
-        mostrandoPaisagem = !mostrandoPaisagem;
-    });
+        // Reaplica animação de revelação
+        imagem.classList.remove('imagem-clique');
+        void imagem.offsetWidth; // Força reflow
+        imagem.classList.add('imagem-clique');
 
-    imagemPaisagem.addEventListener('click', () => {
-        imagemPaisagem.classList.remove('ativa');
-        imagemSol.classList.add('ativa');
-        somConceitual.pause();
-        somConceitual.currentTime = 0;
-        mostrandoPaisagem = false;
+        mostrandoPaisagem = !mostrandoPaisagem;
     });
 });
