@@ -2,21 +2,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const imagem = document.getElementById('imagemTransformadora');
     const som = document.getElementById('somConceitual');
 
+    let mostrandoPaisagem = false;
+
     imagem.addEventListener('click', () => {
-        // Toca o som
-        if (som.paused) {
-            som.play().catch(err => console.error("Erro no áudio:", err));
+        // Remove a animação se já foi aplicada
+        imagem.style.animation = 'none';
+        // Força reflow para reiniciar animação
+        void imagem.offsetWidth;
+        imagem.style.animation = 'revelar 1s ease';
+
+        if (!mostrandoPaisagem) {
+            imagem.src = 'paisagem.png';
+            if (som.paused) {
+                som.play().catch(err => console.error("Erro ao tocar som:", err));
+            }
         } else {
+            imagem.src = 'sol.png';
+            som.pause();
             som.currentTime = 0;
-            som.play();
         }
 
-        // Transição visual: fade e troca de imagem
-        imagem.style.opacity = 0;
-
-        setTimeout(() => {
-            imagem.src = 'paisagem.png';
-            imagem.style.opacity = 1;
-        }, 500); // tempo para "sumir" antes de trocar a imagem
+        mostrandoPaisagem = !mostrandoPaisagem;
     });
 });
