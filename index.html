@@ -2,31 +2,15 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transformação Paisagem</title>
+    <title>Paisagem</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <!-- Botão inicial -->
-        <div class="botao" id="botao">
-            <div class="circulo"></div>
-        </div>
-        
-        <!-- Imagem do sol que se tornará a paisagem -->
-        <div class="sol-imagem" id="solImagem">
-            <img src="sol.png" alt="Sol" id="imagemSol">
-        </div>
-        
-        <!-- Imagem da paisagem -->
-        <div class="paisagem-imagem" id="paisagemImagem">
-            <img src="paisagem.png" alt="Sol com Paisagem" id="imagemPaisagem">
-        </div>
+        <img id="imagemTransformadora" src="sol.png" alt="Sol" class="imagem-clique">
     </div>
-    
-    <!-- Áudio para o clique -->
+
     <audio id="somConceitual" src="som_animacao.mp3" preload="auto"></audio>
-    
     <script src="script.js"></script>
 </body>
 </html>
