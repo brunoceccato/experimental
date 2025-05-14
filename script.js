@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     const botao = document.getElementById('botao');
-    const paisagem = document.getElementById('paisagem');
+    const paisagemImagem = document.getElementById('paisagemImagem');
+    const solImagem = document.getElementById('solImagem');
+    const imagemSol = document.getElementById('imagemSol');
+    const imagemPaisagem = document.getElementById('imagemPaisagem');
     const somConceitual = document.getElementById('somConceitual');
     const circulo = document.querySelector('.circulo');
 
@@ -19,7 +22,14 @@ document.addEventListener('DOMContentLoaded', () => {
         circulo.style.height = "150px";
         circulo.style.borderWidth = "5px";
 
-        // Exibir paisagem com animações
-        paisagem.style.display = "block";
+        // Exibir a imagem do sol com animação suave
+        solImagem.style.animation = "aparecerSol 2s ease-out forwards";
+        
+        // Após um tempo, substituir o sol pela paisagem
+        setTimeout(() => {
+            solImagem.style.display = "none"; // Ocultar o sol
+            paisagemImagem.style.display = "block"; // Mostrar a paisagem
+            paisagemImagem.style.animation = "aparecerPaisagem 2s ease-out forwards";
+        }, 2000); // 2 segundos após a animação do sol
     });
 });
