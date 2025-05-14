@@ -1,39 +1,37 @@
+/* Estilo base */
 body, html {
     margin: 0;
     padding: 0;
-    background-color: #000;
     height: 100%;
+    background-color: #000;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.reveal-container {
-    width: 90vw;
-    height: auto;
-    max-width: 600px;
-    overflow: hidden;
+/* Contêiner de imagem com transição */
+.imagem-container {
     position: relative;
-}
-
-.imagem-clique {
-    width: 100%;
+    width: 300px; /* ou ajuste conforme necessário */
     height: auto;
+    overflow: hidden;
     cursor: pointer;
-    animation: revelar 1s ease;
 }
 
-@keyframes revelar {
-    from {
-        clip-path: inset(100% 0 0 0);
-    }
-    to {
-        clip-path: inset(0 0 0 0);
-    }
+/* Imagens empilhadas */
+.imagem-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: clip-path 1s ease-in-out, opacity 0.8s ease-in-out;
+    clip-path: inset(0 0 100% 0); /* escondido de cima para baixo */
+    opacity: 0;
+}
+
+/* Imagem visível */
+.imagem-container img.visivel {
+    clip-path: inset(0 0 0% 0); /* revela de cima para baixo */
+    opacity: 1;
+    z-index: 2;
 }
