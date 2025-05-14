@@ -14,9 +14,26 @@ body, html {
     align-items: center;
 }
 
+.reveal-container {
+    width: 90vw;
+    height: auto;
+    max-width: 600px;
+    overflow: hidden;
+    position: relative;
+}
+
 .imagem-clique {
+    width: 100%;
+    height: auto;
     cursor: pointer;
-    max-width: 90vw;
-    max-height: 90vh;
-    transition: opacity 1s ease;
+    animation: revelar 1s ease;
+}
+
+@keyframes revelar {
+    from {
+        clip-path: inset(100% 0 0 0);
+    }
+    to {
+        clip-path: inset(0 0 0 0);
+    }
 }
