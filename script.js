@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const imagem = document.getElementById('imagem');
   const som = document.getElementById('somConceitual');
   let mostrandoPaisagem = false;
+  
+  som.loop = true;
 
   imagem.addEventListener('click', () => {
     imagem.classList.remove('revelar'); // reset da animação
