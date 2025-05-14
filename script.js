@@ -1,27 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const imagem = document.getElementById('imagemTransformadora');
-    const som = document.getElementById('somConceitual');
+  const imagem = document.getElementById('imagem');
+  const som = document.getElementById('somConceitual');
 
-    let mostrandoPaisagem = false;
+  let mostrandoPaisagem = false;
 
-    imagem.addEventListener('click', () => {
-        // Atualiza imagem e som com base no estado atual
-        if (!mostrandoPaisagem) {
-            imagem.src = 'paisagem.png';
-            if (som.paused) {
-                som.play().catch(err => console.error("Erro ao tocar som:", err));
-            }
-        } else {
-            imagem.src = 'sol.png';
-            som.pause();
-            som.currentTime = 0;
-        }
+  imagem.addEventListener('click', () => {
+    imagem.style.opacity = 0;
 
-        // Reaplica animação de revelação
-        imagem.classList.remove('imagem-clique');
-        void imagem.offsetWidth; // Força reflow
-        imagem.classList.add('imagem-clique');
+    setTimeout(() => {
+      if (!mostrandoPaisagem) {
+        imagem.src = 'paisagem.png';
+        som.play();
+      } else {
+        imagem.src = 'sol.png';
+        som.pause();
+        som.currentTime = 0;
+      }
 
-        mostrandoPaisagem = !mostrandoPaisagem;
-    });
+      imagem.style.opacity = 1;
+      mostrandoPaisagem = !mostrandoPaisagem;
+    }, 300); // pequeno delay para transição
+  });
 });
