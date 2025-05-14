@@ -1,22 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const botao = document.getElementById('botao');
-    const solImagem = document.getElementById('solImagem');
-    const paisagemImagem = document.getElementById('paisagemImagem');
-    const somConceitual = document.getElementById('somConceitual');
-    
-    // Função para transformação da paisagem
-    botao.addEventListener('click', () => {
-        // Tocar o som
-        if (somConceitual.paused) {
-            somConceitual.play().catch(error => console.error("Erro ao tocar o som:", error));
+    const imagem = document.getElementById('imagemTransformadora');
+    const som = document.getElementById('somConceitual');
+
+    imagem.addEventListener('click', () => {
+        // Toca o som
+        if (som.paused) {
+            som.play().catch(err => console.error("Erro no áudio:", err));
         } else {
-            somConceitual.currentTime = 0;
-            somConceitual.play().catch(error => console.error("Erro ao reiniciar o som:", error));
+            som.currentTime = 0;
+            som.play();
         }
 
-        // Transição do sol para a paisagem
-        solImagem.style.opacity = '0'; // Faz o sol desaparecer
-        paisagemImagem.style.display = 'block'; // Exibe a paisagem
-        paisagemImagem.style.opacity = '1'; // Torna a paisagem visível com transição suave
+        // Transição visual: fade e troca de imagem
+        imagem.style.opacity = 0;
+
+        setTimeout(() => {
+            imagem.src = 'paisagem.png';
+            imagem.style.opacity = 1;
+        }, 500); // tempo para "sumir" antes de trocar a imagem
     });
 });
